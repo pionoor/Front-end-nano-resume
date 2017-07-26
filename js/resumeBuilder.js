@@ -11,7 +11,7 @@ var bio = {
 		"github": "pionoor",
 		"twitter": "pionoor",
 		"location": "Plano, TX"
-	},
+		},
 	"welcomeMessage": "Hi there!",
 	"skills": ["C++", "Java", "Swift", "HTML/CSS"],
 	"biopic": "images/fry.jpg",
@@ -90,7 +90,7 @@ var education = {
 			$(".education-entry").append(formattedonlineDates);
 			$(".education-entry").append(formattedonlineURL);
 
-		});	
+		});
 	}
 };
 
