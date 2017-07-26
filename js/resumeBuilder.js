@@ -90,13 +90,12 @@ var education = {
 			$(".education-entry").append(formattedonlineDates);
 			$(".education-entry").append(formattedonlineURL);
 
-
-
-		})	
-	};
+		});	
+	}
 };
 
 //-------------------------------------work----------------------------------------------
+
 var work = {
 	"jobs": [{
 		"employer": "Infosys",
