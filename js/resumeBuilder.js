@@ -25,7 +25,6 @@ var bio = {
 		var formattedTwitter = HTMLtwitter.replace("%data%", bio.contacts.twitter);
 		var formattedGithub = HTMLgithub.replace("%data%", bio.contacts.github);
 		var formattedLocation = HTMLlocation.replace("%data%", bio.contacts.location);
-		var formattedBioPic = HTMLbioPic.replace("%data%", bio.biopic);
 
 		$("#header").append(formattedName);
 		$("#header").append(formattedRole);
@@ -39,7 +38,7 @@ var bio = {
 		$("#header").append(formattedWelcomMsg);
 
 		$("#header").append(HTMLskillsStart);
-		for (item in bio.skills) {
+		for (var item in bio.skills) {
 			var formattedSkills = HTMLskills.replace("%data%", bio.skills[item]);
 			$("#skills").append(formattedSkills);
 		}
@@ -77,7 +76,7 @@ var education = {
 			$(".education-entry").append(formattedSchoolDates);
 			$(".education-entry").append(formattedSchoolLocation);
 			$(".education-entry").append(formattedSchoolMajor);
-		})
+		});
 
 		$(".education-entry").append(HTMLonlineClasses);
  		education.onlineCourses.forEach(function(course){
@@ -94,7 +93,7 @@ var education = {
 
 
 		})	
-	}
+	};
 };
 
 //-------------------------------------work----------------------------------------------
