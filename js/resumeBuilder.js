@@ -26,20 +26,17 @@ var bio = {
 		var formattedGithub = HTMLgithub.replace("%data%", bio.contacts.github);
 		var formattedLocation = HTMLlocation.replace("%data%", bio.contacts.location);
 
-		$("#header").append(formattedName);
-		$("#header").append(formattedRole);
+		$("#header").append(formattedName, formattedRole);
 
-		$("#header, #footerContacts").append(formattedMobile);
-		$("#header, #footerContacts").append(formattedEmail);
-		$("#header, #footerContacts").append(formattedTwitter);
-		$("#header, #footerContacts").append(formattedGithub);
+
+		$("#header, #footerContacts").append(formattedMobile, formattedEmail, formattedTwitter, formattedGithub);
 		
-		$("#header").append(formattedBioPic);
-		$("#header").append(formattedWelcomMsg);
+		$("#header").append(formattedBioPic, formattedWelcomMsg);
 
 		$("#header").append(HTMLskillsStart);
-		for (var item in bio.skills) {
-			var formattedSkills = HTMLskills.replace("%data%", bio.skills[item]);
+
+		for (var i = 0; i < bio.skills.length; i++) {
+			var formattedSkills = HTMLskills.replace("%data%", bio.skills[i]);
 			$("#skills").append(formattedSkills);
 		}
 		
@@ -52,7 +49,7 @@ var education = {
 		"name": "Texas A&M University",
 		"location": "College Station",
 		"degree": "Bachelors of Science",
-		"major": "Computer Science",
+		"major": ["Computer Science"],
 		"dates": "Jan 2012 - Dec 2016",
 		"url": "www.tamu.edu"
 	}],
@@ -71,11 +68,8 @@ var education = {
 			var formattedSchoolLocation = HTMLschoolLocation.replace("%data%", school.location);
 			var formattedSchoolMajor = HTMLschoolMajor.replace("%data%", school.major);
 
-			$(".education-entry").append(formattedSchoolName);
-			$(".education-entry").append(formattedSchoolDegree);
-			$(".education-entry").append(formattedSchoolDates);
-			$(".education-entry").append(formattedSchoolLocation);
-			$(".education-entry").append(formattedSchoolMajor);
+			$(".education-entry").append(formattedSchoolName, formattedSchoolDegree, formattedSchoolDates, formattedSchoolLocation, formattedSchoolMajor);
+			
 		});
 
 		$(".education-entry").append(HTMLonlineClasses);
@@ -85,10 +79,8 @@ var education = {
 			var formattedonlineDates = HTMLonlineDates.replace("%data%", course.dates);
 			var formattedonlineURL = HTMLonlineURL.replace("%data%", course.url);
 			
-			$(".education-entry").append(formattedonlineTitle);
-			$(".education-entry").append(formattedonlineSchool);
-			$(".education-entry").append(formattedonlineDates);
-			$(".education-entry").append(formattedonlineURL);
+			$(".education-entry").append(formattedonlineTitle, formattedonlineSchool, formattedonlineDates, formattedonlineURL);
+
 
 		});
 	}
@@ -131,10 +123,8 @@ var work = {
 			var formattedworkEmployerTiltle = formattedworkEmployer + formattedworkTitle;
 			var formattedworkLocation = HTMLworkLocation.replace("%data%", job.location);
 			var formattedworkDescription = HTMLworkDescription.replace("%data%", job.description);
-			$(".work-entry:last").append(formattedworkEmployerTiltle);
-			$(".work-entry:last").append(formattedWorkDates);
-			$(".work-entry:last").append(formattedworkLocation);
-			$(".work-entry:last").append(formattedworkDescription);
+			$(".work-entry:last").append(formattedworkEmployerTiltle, formattedWorkDates, formattedworkLocation, formattedworkDescription);
+		
 		});
 	}
 };
@@ -144,12 +134,12 @@ var projects = {
 		"title": "Clean XKCD",
 		"dates": "2015",
 		"description": "A clean, and user-friendly interface that uses xkcd.com API to display the content of the website in a native app. The app supports pinch gestures, in addition, it allows the user to save any comic picture directly to their local photo library.",
-		"images": []
+		"images": ["http://placehold.it/300x200", "http://placehold.it/300x200"]
 	}, {
 		"title": "Gesture Ball Maze Project",
 		"dates": "Mar 2016 - May 2016",
 		"description": "An automated version of the labyrinth ball maze game that is controlled by hand motion via a Leap Motion device. Mechanically, the board will be controlled by two servos; each one responsible for tilting the around its axis. See figure below. The palm of the player's hand will represent the plane of the game. By tilting the palm of the hand, the plane of the board will tilt accordingly. This can be achieved by connecting the Leap Motion to a standalone PC that processes the data and sends it to a micro-controller. The micro-controller then translates the data to corresponding voltage values that animate the servos",
-		"images": []
+		"images": ["http://placehold.it/300x200", "http://placehold.it/300x200"]
 		}],
 	"display" : function() {
 		projects.projects.forEach(function(project) {
@@ -157,11 +147,18 @@ var projects = {
 			var formattedProjectTitle = HTMLprojectTitle.replace("%data%", project.title);
 			var formattedProjectDate = HTMLprojectDates.replace("%data%", project.dates);
 			var formattedProjectDescription = HTMLprojectDescription.replace("%data%", project.description);
-			var formattedProjectImage = HTMLprojectImage.replace("%data%", project.images);
-			$(".project-entry:last").append(formattedProjectTitle);
-			$(".project-entry:last").append(formattedProjectDate);
-			$(".project-entry:last").append(formattedProjectDescription);
-			$(".project-entry:last").append(formattedProjectImage);
+
+			$(".project-entry:last").append(formattedProjectTitle, formattedProjectDate, formattedProjectDescription, );
+
+			project.images.forEach(function(img){
+				var formattedProjectImage = HTMLprojectImage.replace("%data%", project.images);
+
+				$(".project-entry:last").append(formattedProjectImage);
+			});
+
+			
+		
+			
 		});
 	}
 };
